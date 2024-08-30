@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        
-        RECIPIENT_EMAIL = 'your-email@example.com'
+        RECIPIENT_EMAIL = 'snehagopalappa@gmail.com'
     }
 
     stages {
@@ -11,7 +10,6 @@ pipeline {
             steps {
                 echo 'Stage 1: Build the code using Maven.'
                 echo 'Tool: Maven'
-               
             }
         }
 
@@ -25,14 +23,12 @@ pipeline {
                 success {
                     mail to: "${env.RECIPIENT_EMAIL}",
                          subject: "Jenkins Pipeline: Unit and Integration Tests Passed",
-                         body: "The Unit and Integration Tests stage has completed successfully.",
-                         attachLog: true
+                         body: "The Unit and Integration Tests stage has completed successfully. Check the Jenkins console output for details."
                 }
                 failure {
                     mail to: "${env.RECIPIENT_EMAIL}",
                          subject: "Jenkins Pipeline: Unit and Integration Tests Failed",
-                         body: "The Unit and Integration Tests stage has failed.",
-                         attachLog: true
+                         body: "The Unit and Integration Tests stage has failed. Check the Jenkins console output for details."
                 }
             }
         }
@@ -49,20 +45,18 @@ pipeline {
             steps {
                 echo 'Stage 4: Perform security scan using OWASP Dependency-Check.'
                 echo 'Tool: OWASP Dependency-Check'
-               
+       
             }
             post {
                 success {
                     mail to: "${env.RECIPIENT_EMAIL}",
                          subject: "Jenkins Pipeline: Security Scan Passed",
-                         body: "The Security Scan stage has completed successfully.",
-                         attachLog: true
+                         body: "The Security Scan stage has completed successfully. Check the Jenkins console output for details."
                 }
                 failure {
                     mail to: "${env.RECIPIENT_EMAIL}",
                          subject: "Jenkins Pipeline: Security Scan Failed",
-                         body: "The Security Scan stage has failed.",
-                         attachLog: true
+                         body: "The Security Scan stage has failed. Check the Jenkins console output for details."
                 }
             }
         }
@@ -71,7 +65,6 @@ pipeline {
             steps {
                 echo 'Stage 5: Deploy the application to a staging server (AWS EC2).'
                 echo 'Tool: AWS CLI'
-                
             }
         }
 
@@ -79,6 +72,7 @@ pipeline {
             steps {
                 echo 'Stage 6: Run Integration Tests on the staging environment.'
                 echo 'Tools: JUnit, TestNG'
+               
             }
         }
 
@@ -86,6 +80,7 @@ pipeline {
             steps {
                 echo 'Stage 7: Deploy the application to the production server (AWS EC2).'
                 echo 'Tool: AWS CLI'
+            
             }
         }
     }
@@ -96,3 +91,4 @@ pipeline {
         }
     }
 }
+
