@@ -15,4 +15,4 @@ Welcome to the **Jenkins Pipeline Demo** repository! This project demonstrates h
 - **Branch Management**: The pipeline can be configured to handle different branches, such as `main` and `development`.
 - **Notification System**: Get notified of build statuses via email or other communication channels.
 
-## Getting Started
+
