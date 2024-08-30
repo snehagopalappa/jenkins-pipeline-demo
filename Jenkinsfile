@@ -10,6 +10,7 @@ pipeline {
             steps {
                 echo 'Stage 1: Build the code using Maven.'
                 echo 'Tool: Maven'
+                // Example command: sh 'mvn clean package'
             }
         }
 
@@ -17,7 +18,7 @@ pipeline {
             steps {
                 echo 'Stage 2: Run Unit and Integration Tests using JUnit and TestNG.'
                 echo 'Tools: JUnit, TestNG'
-               
+                // Example command: sh 'mvn test'
             }
             post {
                 success {
@@ -37,7 +38,7 @@ pipeline {
             steps {
                 echo 'Stage 3: Perform code analysis using SonarQube.'
                 echo 'Tool: SonarQube'
-               
+                // Example command: sh 'mvn sonar:sonar'
             }
         }
 
@@ -45,7 +46,7 @@ pipeline {
             steps {
                 echo 'Stage 4: Perform security scan using OWASP Dependency-Check.'
                 echo 'Tool: OWASP Dependency-Check'
-       
+                // Example command: sh 'dependency-check.sh --project my-project --scan .'
             }
             post {
                 success {
@@ -65,6 +66,7 @@ pipeline {
             steps {
                 echo 'Stage 5: Deploy the application to a staging server (AWS EC2).'
                 echo 'Tool: AWS CLI'
+                // Example command: sh 'aws deploy push --application-name my-app --s3-location s3://my-bucket/my-app.zip'
             }
         }
 
@@ -72,7 +74,7 @@ pipeline {
             steps {
                 echo 'Stage 6: Run Integration Tests on the staging environment.'
                 echo 'Tools: JUnit, TestNG'
-               
+                // Example command: sh 'mvn verify'
             }
         }
 
@@ -80,7 +82,7 @@ pipeline {
             steps {
                 echo 'Stage 7: Deploy the application to the production server (AWS EC2).'
                 echo 'Tool: AWS CLI'
-            
+                // Example command: sh 'aws deploy push --application-name my-app --s3-location s3://my-bucket/my-app.zip'
             }
         }
     }
@@ -91,4 +93,3 @@ pipeline {
         }
     }
 }
-
